@@ -19,7 +19,7 @@
             {{-- col details --}}
             <div class="col-9">
                 <div class="d-flex">
-                    <h5 class="py-3 fw-bold text-center ">Instagram</h5>
+                    <h5 class="py-3 fw-bold text-center ">{{$user->username}}</h5>
                     {{-- button --}}
                     <div class="mt-2 mx-4">
                         <button type="button" class="btn btn-primary">Follow</button>
