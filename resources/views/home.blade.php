@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid mt-5">
     
-    <div class="container d-flex justify-content-center">
+    <div class="container">
 
         {{-- row --}}
         <div class="row">
@@ -11,7 +11,7 @@
             {{-- col logo --}}
             <div class="col-3">
                 <div class="d-flex justify-content-center ms-3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" class="img-fluid rounded-top" width="200">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" class="img-fluid rounded-top" width="150">
                 </div>
             </div>
             {{-- /col logo --}}
@@ -48,6 +48,30 @@
 
         </div>
         {{-- /row --}}
+
+        {{-- row --}}
+        <div class="row mt-5">
+
+            <div class="col-3">
+                <img src="https://unsplash.it/300/300?image=79" class="img-fluid rounded-top">
+            </div>
+
+            <div class="col-3">
+                <img src="https://unsplash.it/300/300?image=12" class="img-fluid rounded-top" alt="">
+
+            </div>
+
+            <div class="col-3">
+                <img src="https://unsplash.it/300/300?image=234" class="img-fluid rounded-top" alt="">
+
+            </div>
+
+            <div class="col-3">
+                <img src="https://unsplash.it/300/300?image=922" class="img-fluid rounded-top" alt="">
+
+            </div>
+        </div>
+        {{-- row --}}
 
     </div>
     
