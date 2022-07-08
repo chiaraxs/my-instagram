@@ -2,22 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
+use App\Post;
 
-class ProfileController extends Controller
+class PostsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user)
+
+    // la creazione dei post è protetta: il create funziona solo se sei autenticato/loggato
+    public function __construct()
     {
-        $user = User::findOrFail($user);
-        return view('profiles.index', [
-            'user' => $user,
-        ]);
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        //
     }
 
     /**
@@ -27,7 +32,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -38,7 +43,13 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'caption' => 'required|string|max:600',
+            'image' => 'required|image',
+        ]);
+
+        $post = new Post();
+        $post->fill($data);
     }
 
     /**
