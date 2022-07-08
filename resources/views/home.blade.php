@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid mt-5">
-    
+
     <div class="container">
 
         {{-- row --}}
@@ -19,7 +19,7 @@
             {{-- col details --}}
             <div class="col-9">
                 <div class="d-flex">
-                    <h5 class="py-3 fw-bold text-center ">{{$user->username}}</h5>
+                    <h5 class="py-3 fw-bold text-center ">{{$user->profile->title}}</h5>
                     {{-- button --}}
                     <div class="mt-2 mx-4">
                         <button type="button" class="btn btn-primary">Follow</button>
@@ -36,11 +36,11 @@
                 {{--/ page details --}}
 
                 <div class="mt-2">
-                    <a href="#" class="fw-bold">www.instagram.it</a>
+                    <a href="#" class="fw-bold">{{$user->profile->url}}</a>
                 </div>
 
                 <div class="mt-2">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <p>{{$user->profile->description}}</p>
                 </div>
 
             </div>
@@ -74,7 +74,7 @@
         {{-- row --}}
 
     </div>
-    
-    
+
+
 </div>
 @endsection
