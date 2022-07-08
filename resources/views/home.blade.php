@@ -18,11 +18,13 @@
 
             {{-- col details --}}
             <div class="col-9">
-                <div class="d-flex">
+                <div class="d-flex justify-content-between">
                     <h5 class="py-3 fw-bold text-center ">{{$user->profile->title}}</h5>
                     {{-- button --}}
                     <div class="mt-2 mx-4">
-                        <button type="button" class="btn btn-primary">Follow</button>
+                        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                            Add Post
+                        </a>
                     </div>
                     {{-- /button --}}
                 </div>
