@@ -50,13 +50,16 @@ class PostsController extends Controller
             'image' => 'required|image',
         ]);
 
+        $imagePath = request('image')->store('uploads', 'public');  // dichiaro la variabile $imagePath dove andranno salvate le img storage/public/uploads
         $post = new Post();
-        $post->fill($data);
+        $post->fill($data, $imagePath);
+
+
         $post->user_id = Auth::user()->id;    // post collegato all'id dell'user loggato
 
         $post->save();
 
-        // return redirect()->route('posts.index');
+        return redirect('/profile/' . auth()->user()->id);
     }
 
     /**
