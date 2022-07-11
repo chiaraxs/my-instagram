@@ -22,7 +22,7 @@
                     <h5 class="py-3 fw-bold text-center ">{{$user->profile->title}}</h5>
                     {{-- button --}}
                     <div class="mt-2 mx-4">
-                        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                        <a class="btn btn-primary" href="/p/create" role="button">
                             Add Post
                         </a>
                     </div>
@@ -54,24 +54,13 @@
         {{-- row --}}
         <div class="row mt-5">
 
+            @foreach ($user->posts as $post)
             <div class="col-3">
-                <img src="https://unsplash.it/300/300?image=79" class="img-fluid rounded-top">
+                <img src="{{$post->image}}" class="img-fluid rounded-top w-100">
+                <p>{{$post->caption}}</p>
             </div>
+            @endforeach
 
-            <div class="col-3">
-                <img src="https://unsplash.it/300/300?image=12" class="img-fluid rounded-top" alt="">
-
-            </div>
-
-            <div class="col-3">
-                <img src="https://unsplash.it/300/300?image=234" class="img-fluid rounded-top" alt="">
-
-            </div>
-
-            <div class="col-3">
-                <img src="https://unsplash.it/300/300?image=922" class="img-fluid rounded-top" alt="">
-
-            </div>
         </div>
         {{-- row --}}
 

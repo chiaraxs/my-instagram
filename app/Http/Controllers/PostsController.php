@@ -50,6 +50,7 @@ class PostsController extends Controller
             'image' => 'required|image',
         ]);
 
+        // IMAGE TO FIX
         $imagePath = request('image')->store('uploads', 'public');  // dichiaro la variabile $imagePath dove andranno salvate le img storage/public/uploads
         $post = new Post();
         $post->fill($data, $imagePath);
@@ -59,7 +60,7 @@ class PostsController extends Controller
 
         $post->save();
 
-        return redirect('/profile/' . auth()->user()->id);
+        return redirect()->route('profile.show', $post); // TO FIX A post.show dopo che creo la blade
     }
 
     /**
