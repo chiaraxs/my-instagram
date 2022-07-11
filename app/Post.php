@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'caption',
+        'image',
+    ];
 
-    public function user(){
-        return $this->belongsTo(User::class);   // relationship maty to many: 1 profile -> + posts
+
+    // relationship many to many: 1 profile -> + posts
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

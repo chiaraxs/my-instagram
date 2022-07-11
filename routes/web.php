@@ -16,18 +16,20 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+// 1. rotta home - pre login/register
 Route::get('/', function () {
     return view('welcome');
 });
 
+// 1. rotta home - after login/register
+Route::get('/home', function () {
+    return view('welcome');
+});
 
 
+// 2. rotte posts
 Route::get('/p/create', 'PostsController@create');  // rotta post -> http://127.0.0.1:8000/p/create
 Route::post('/p', 'PostsController@store');
 
+// 3. rotte profile
 Route::get('/profile/{user}', 'ProfileController@index')->name('profile.show');  // rotta profile ->http://127.0.0.1:8000/profile/1
-
-// ROTTA GENERICA
-Route::get("{any?}", function () {
-    return view("welcome");
-})->where("any", ".*");

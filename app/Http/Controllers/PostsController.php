@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostsController extends Controller
 {
@@ -50,6 +52,11 @@ class PostsController extends Controller
 
         $post = new Post();
         $post->fill($data);
+        $post->user_id = Auth::user()->id;    // post collegato all'id dell'user loggato
+
+        $post->save();
+
+        // return redirect()->route('posts.index');
     }
 
     /**
