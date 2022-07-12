@@ -88,10 +88,11 @@ class ProfileController extends Controller
         // collegamento a id user autenticato -> unico con edit del proprio profilo
         $user->user_id = Auth::user()->id;
 
-        // protection: solo l'utente loggato può editare il proprio profilo -> collegato al model nelle Policies -> ProfilePolicy.php
-        $this->authorize('update', $user->profile);
+        // TO FIX - controllo storage image
+        // $user->profile->image = Storage::put('profile', $data['image']);
 
         $user->update($data);
+
         return redirect()->route('profile.show', $user->id);
     }
 
