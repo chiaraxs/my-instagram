@@ -56,8 +56,8 @@
 
             @foreach ($user->posts as $post)
             <div class="col-3">
-                <img src="{{$post->image}}" class="img-fluid rounded-top w-100">
-                <p>{{$post->caption}}</p>
+                <img src="/storage/{{ $post->image }}" class="rounded-top w-100 h-100">
+                <p class="text-center mt-2">{{$post->caption}}</p>
             </div>
             @endforeach
 

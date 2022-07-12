@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostsController extends Controller
@@ -50,14 +51,14 @@ class PostsController extends Controller
             'image' => 'required|image',
         ]);
 
-        // IMAGE TO FIX
-        $imagePath = request('image')->store('uploads', 'public');  // dichiaro la variabile $imagePath dove andranno salvate le img storage/public/uploads
+
         $post = new Post();
-        $post->fill($data, $imagePath);
+        $post->fill($data);
 
-
-        $post->user_id = Auth::user()->id;    // post collegato all'id dell'user loggato
-
+        // collegamento a id user autenticato
+        $post->user_id = Auth::user()->id; 
+        // controllo storage image
+        $post->image = Storage::put('image', $data['image']);   // put('sottocartella dove inserire i file', 'file da caricare')
         $post->save();
 
         return redirect()->route('profile.show', $post); // TO FIX A post.show dopo che creo la blade
