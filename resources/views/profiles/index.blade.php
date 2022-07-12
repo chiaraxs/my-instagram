@@ -3,6 +3,7 @@
 @section('content')
 <div class="container-fluid mt-5">
 
+    {{-- container --}}
     <div class="container">
 
         {{-- row --}}
@@ -31,7 +32,7 @@
 
                 {{-- page details --}}
                 <div class="d-flex">
-                    <div><span class="fw-bold">153</span> post</div>
+                    <div><span class="fw-bold">{{$user->posts->count()}}</span> post</div>
                     <div><span class="fw-bold ps-3">456k</span> followers</div>
                     <div><span class="fw-bold ps-3">10k</span> following</div>
                 </div>
@@ -54,18 +55,19 @@
         {{-- row --}}
         <div class="row mt-5">
 
+            {{-- posts --}}
             @foreach ($user->posts as $post)
-            <div class="col-3">
+            <div class="col-3 my-4">
                 <img src="/storage/{{ $post->image }}" class="rounded-top w-100 h-100">
                 <p class="text-center mt-2">{{$post->caption}}</p>
             </div>
             @endforeach
+            {{-- /posts --}}
 
         </div>
         {{-- row --}}
 
     </div>
-
-
+    {{-- /container --}}
 </div>
 @endsection

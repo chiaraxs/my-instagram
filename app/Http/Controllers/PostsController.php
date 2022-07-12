@@ -58,10 +58,10 @@ class PostsController extends Controller
         // collegamento a id user autenticato
         $post->user_id = Auth::user()->id; 
         // controllo storage image
-        $post->image = Storage::put('image', $data['image']);   // put('sottocartella dove inserire i file', 'file da caricare')
+        $post->image = Storage::put('image', $data['image']);   // put(parametro 1:'sottocartella dove inserire i file', parametro 2: 'file da caricare')
         $post->save();
 
-        return redirect()->route('profile.show', $post); // TO FIX A post.show dopo che creo la blade
+        return redirect('/profile/' . auth()->user()->id);
     }
 
     /**
