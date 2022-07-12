@@ -6,6 +6,7 @@ use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -58,6 +59,10 @@ class ProfileController extends Controller
      */
     public function edit(User $user)
     {
+
+        // protection: solo l'utente loggato può editare il proprio profilo -> collegato al model nelle Policies -> ProfilePolicy.php
+        $this->authorize('update', $user->profile);
+
         return view('profiles.edit', compact('user'));
     }
 
@@ -77,9 +82,16 @@ class ProfileController extends Controller
             'image' => 'nullable',
         ]);
 
-        $user = Profile::findOrFail($id);
-        $user->update($data);
 
+        $user = Profile::findOrFail($id);
+
+        // collegamento a id user autenticato -> unico con edit del proprio profilo
+        $user->user_id = Auth::user()->id;
+
+        // protection: solo l'utente loggato può editare il proprio profilo -> collegato al model nelle Policies -> ProfilePolicy.php
+        $this->authorize('update', $user->profile);
+
+        $user->update($data);
         return redirect()->route('profile.show', $user->id);
     }
 

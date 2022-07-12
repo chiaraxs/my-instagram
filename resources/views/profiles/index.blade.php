@@ -23,12 +23,27 @@
                     <h5 class="py-3 fw-bold text-center ">{{$user->profile->title}}</h5>
                     {{-- button --}}
                     <div class="mt-2 mx-4">
+
+                        {{-- restrict access 1 --}}
+                        {{-- solo l'utente loggato (true) nel proprio profilo può adds post --}}
+                        {{-- solo lui potrà vedere il button 'add post' --}}
+                        @can('update', $user->profile)
                         <a class="btn btn-primary" href="/p/create" role="button">
                             Add Post
                         </a>
+                        @endcan
+                        {{-- /restrict access 1  --}}
+
+                        {{-- restrict access 2  --}}
+                        {{-- solo l'utente loggato (true) nel proprio profilo può editarlo --}}
+                        {{-- solo lui potrà vedere il button 'edit profile' --}}
+                        @can('update', $user->profile)
                         <a class="btn btn-primary" href="/profile/{{$user->id}}/edit" role="button">
-                           Edit Profile
+                            Edit Profile
                         </a>
+                        @endcan
+                        {{-- /restrict access 2 --}}
+
                     </div>
                     {{-- /button --}}
                 </div>
