@@ -58,7 +58,9 @@
             {{-- posts --}}
             @foreach ($user->posts as $post)
             <div class="col-3 my-4">
-                <img src="/storage/{{ $post->image }}" class="rounded-top w-100 h-100">
+                <a href="/p/{{$post->id}}">
+                    <img src="/storage/{{ $post->image }}" class="rounded-top w-100 h-100">
+                </a>
                 <p class="text-center mt-2">{{$post->caption}}</p>
             </div>
             @endforeach

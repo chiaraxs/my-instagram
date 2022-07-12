@@ -56,7 +56,7 @@ class PostsController extends Controller
         $post->fill($data);
 
         // collegamento a id user autenticato
-        $post->user_id = Auth::user()->id; 
+        $post->user_id = Auth::user()->id;
         // controllo storage image
         $post->image = Storage::put('image', $data['image']);   // put(parametro 1:'sottocartella dove inserire i file', parametro 2: 'file da caricare')
         $post->save();
@@ -70,9 +70,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\App\Post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
     /**
