@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -12,14 +14,10 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user)
+    public function index(User $user)
     {
-        $user = User::findOrFail($user);
-        return view('profiles.index', [
-            'user' => $user,
-        ]);
+        return view('profiles.index', compact('user'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -58,9 +56,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('profiles.edit', compact('user'));
     }
 
     /**
@@ -72,7 +70,17 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'url' => 'url|nullable',
+            'image' => 'nullable',
+        ]);
+
+        $user = Profile::findOrFail($id);
+        $user->update($data);
+
+        return redirect()->route('profile.show', $user->id);
     }
 
     /**

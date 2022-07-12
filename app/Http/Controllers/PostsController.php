@@ -70,7 +70,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(\App\Post $post)
+    public function show(Post $post)
     {
         return view('posts.show', compact('post'));
     }

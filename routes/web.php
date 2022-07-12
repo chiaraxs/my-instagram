@@ -29,8 +29,10 @@ Route::get('/home', function () {
 
 // 2. rotte posts
 Route::get('/p/create', 'PostsController@create');  // rotta post -> http://127.0.0.1:8000/p/create
-Route::get('/p/{post}', 'PostsController@show');  // rotta post -> http://127.0.0.1:8000/p/create
+Route::get('/p/{post}', 'PostsController@show');  
 Route::post('/p', 'PostsController@store');
 
 // 3. rotte profile
 Route::get('/profile/{user}', 'ProfileController@index')->name('profile.show');  // rotta profile ->http://127.0.0.1:8000/profile/1
+Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
+Route::put('/profile/{user}', 'ProfileController@update')->name('profile.update');

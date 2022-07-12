@@ -26,6 +26,9 @@
                         <a class="btn btn-primary" href="/p/create" role="button">
                             Add Post
                         </a>
+                        <a class="btn btn-primary" href="/profile/{{$user->id}}/edit" role="button">
+                           Edit Profile
+                        </a>
                     </div>
                     {{-- /button --}}
                 </div>
