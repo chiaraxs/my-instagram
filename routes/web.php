@@ -36,3 +36,6 @@ Route::post('/p', 'PostsController@store');
 Route::get('/profile/{user}', 'ProfileController@index')->name('profile.show');  // rotta profile ->http://127.0.0.1:8000/profile/1
 Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
 Route::put('/profile/{user}', 'ProfileController@update')->name('profile.update');
+
+// 4. rotta axios -> api per follow
+Route::post('follow/{user}','FollowsController@store');
