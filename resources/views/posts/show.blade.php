@@ -15,8 +15,26 @@
 
             {{-- col dx -> details --}}
             <div class="col-3">
-                <h3>{{$post->user->username}}</h3>
-                <p>{{$post->caption}}</p>
+                <div>
+                    <img src="/storage/{{ $post->user->profile->image}}" class="img-fluid rounded-top" alt="">
+                <div>
+
+                <div>
+                    <a href="/profile/{{$post->user->id}}" class="link-dark mx-2 fw-bold fs-2">{{$post->user->username}}</a>
+
+                    <hr>
+            
+                    <p>
+                        {{$post->caption}}
+                    </p>
+                </div>
+                
+                {{-- follow button --}}
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-primary mt-2" href="#" role="button">Follow</a>
+                </div>
+                {{-- /follow button --}}
+
             </div>
             {{-- /col dx --}}
         </div>

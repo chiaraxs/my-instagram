@@ -37,15 +37,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Boot Method -> This method is called after all other service providers have been registered, 
+    // meaning you have access to all other services that have been registered by the framework:
+    protected static function boot()
+    {
+
+        parent::boot();
+
+        static::created(function ($user){
+            $user->profile()->create([
+                'title' => $user->username,
+            ]);
+        });
+    }
+
     // relationship one to one: 1 profile -> 1 user
     public function profile()
     {
-        return $this->hasOne(Profile::class);    
+        return $this->hasOne(Profile::class);
     }
 
     // relationship many to many: 1 profile -> + posts (desc)
     public function posts()
     {
-        return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');  
+        return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
     }
 }
