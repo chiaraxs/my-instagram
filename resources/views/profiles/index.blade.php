@@ -22,7 +22,7 @@
             <div class="col-9">
                 <div class="d-flex justify-content-between">
                     <h5 class="py-3 fw-bold text-center">{{$user->profile->title}}</h5>
-                    
+
                     {{-- button --}}
                     <div class="mt-2 px-4">
 
@@ -47,7 +47,7 @@
                         {{-- /restrict access 2 --}}
 
                         {{-- vue button --}}
-                        <follow-button user-id="{{$user->id}}"></follow-button>
+                        <follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button>
                         {{-- vue button --}}
 
                     </div>
@@ -57,8 +57,8 @@
                 {{-- page details --}}
                 <div class="d-flex">
                     <div><span class="fw-bold">{{$user->posts->count()}}</span> post</div>
-                    <div><span class="fw-bold ps-3">456k</span> followers</div>
-                    <div><span class="fw-bold ps-3">10k</span> following</div>
+                    <div><span class="fw-bold ps-3">{{$user->profile->followers->count()}}</span> followers</div>
+                    <div><span class="fw-bold ps-3">{{$user->following->count()}}</span> following</div>
                 </div>
                 {{--/ page details --}}
 

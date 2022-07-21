@@ -44,7 +44,7 @@ class User extends Authenticatable
 
         parent::boot();
 
-        static::created(function ($user){
+        static::created(function ($user) {
             $user->profile()->create([
                 'title' => $user->username,
             ]);
@@ -61,5 +61,11 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
+    }
+
+    // relationship many to many: 1 user -> + profile follows
+    public function following()
+    {
+        return $this->belongsToMany(Profile::class);
     }
 }
