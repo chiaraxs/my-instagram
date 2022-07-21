@@ -25,7 +25,11 @@ class PostsController extends Controller
 
     public function index()
     {
-        //
+        $users = auth()->user()->following()->pluck('profiles.user_id');    // The pluck method retrieves all of the values for a given key
+
+        $posts = Post::whereIn('user_id', $users)->latest()->get();    // i post sono ordinati in desc
+
+        return view('posts.index', compact('posts'));
     }
 
     /**
