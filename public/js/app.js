@@ -5138,9 +5138,9 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row justify-content-center"
   }, [_c("div", {
-    staticClass: "col-md-8"
+    staticClass: "col-8"
   }, [_c("button", {
-    staticClass: "btn btn-primary",
+    staticClass: "btn btn-info mx-3",
     attrs: {
       href: "#",
       role: "button"

@@ -12,8 +12,8 @@
             {{-- col logo --}}
             <div class="col-3">
                 <div class="d-flex justify-content-center ms-3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" class="img-fluid rounded-top" width="150">
-                    {{-- <img src="/profile/{{$user->profile->image}}" class="img-fluid rounded-top" width="150"> --}}
+                    {{-- <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" class="img-fluid rounded-top" width="150"> --}}
+                    <img src="/storage/{{$user->profile->image}}" class="img-fluid rounded-top" width="150">
                 </div>
             </div>
             {{-- /col logo --}}
@@ -21,16 +21,16 @@
             {{-- col details --}}
             <div class="col-9">
                 <div class="d-flex justify-content-between">
-                    <h5 class="py-3 fw-bold text-center ">{{$user->profile->title}}</h5>
+                    <h5 class="py-3 fw-bold text-center">{{$user->profile->title}}</h5>
                     
                     {{-- button --}}
-                    <div class="mt-2 mx-4">
+                    <div class="mt-2 px-4">
 
                         {{-- restrict access 1 --}}
                         {{-- solo l'utente loggato (true) nel proprio profilo può adds post --}}
                         {{-- solo lui potrà vedere il button 'add post' --}}
                         @can('update', $user->profile)
-                        <a class="btn btn-primary" href="/p/create" role="button">
+                        <a class="btn btn-primary mx-2 my-1" href="/p/create" role="button">
                             Add Post
                         </a>
                         @endcan
