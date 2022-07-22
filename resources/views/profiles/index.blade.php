@@ -20,17 +20,21 @@
 
             {{-- col details --}}
             <div class="col-9">
-                <div class="d-flex justify-content-between">
-                    <h5 class="py-3 fw-bold text-center">{{$user->profile->title}}</h5>
+                <div class="d-flex">
+                    <h5 class=" fw-bold text-center py-2">{{$user->profile->title}}</h5>
 
-                    {{-- button --}}
+                    {{-- vue button --}}
+                    <follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button>
+                    {{-- vue button --}}
+
+                    {{-- buttons --}}
                     <div class="mt-2 px-4">
 
                         {{-- restrict access 1 --}}
                         {{-- solo l'utente loggato (true) nel proprio profilo può adds post --}}
                         {{-- solo lui potrà vedere il button 'add post' --}}
                         @can('update', $user->profile)
-                        <a class="btn btn-primary mx-2 my-1" href="/p/create" role="button">
+                        <a class="btn btn-primary mx-2 my-2" href="/p/create" role="button">
                             Add Post
                         </a>
                         @endcan
@@ -46,12 +50,8 @@
                         @endcan
                         {{-- /restrict access 2 --}}
 
-                        {{-- vue button --}}
-                        <follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button>
-                        {{-- vue button --}}
-
                     </div>
-                    {{-- /button --}}
+                    {{-- /buttons --}}
                 </div>
 
                 {{-- page details --}}

@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-8">
+        <div class="row">
+            <div class="col-12">
                 
                <!-- follow button  -->
-                <button class="btn btn-info mx-3" href="#" role="button" @click="followUser" v-text="buttonText"></button>
+                <button class="btn btn-info" href="#" role="button" @click="followUser" v-text="buttonText"></button>
                 <!-- /follow button -->
 
             </div>

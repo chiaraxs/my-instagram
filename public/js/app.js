@@ -5153,11 +5153,11 @@ var render = function render() {
   return _c("div", {
     staticClass: "container"
   }, [_c("div", {
-    staticClass: "row justify-content-center"
+    staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-8"
+    staticClass: "col-12"
   }, [_c("button", {
-    staticClass: "btn btn-info mx-3",
+    staticClass: "btn btn-info",
     attrs: {
       href: "#",
       role: "button"
