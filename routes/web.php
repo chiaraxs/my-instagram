@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\NewUserWelcome;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes();
+
+Route::get('/email', function () {
+    return new NewUserWelcome();
+});
 
 // 1. rotta home - pre login/register
 Route::get('/', function () {
